@@ -27,28 +27,46 @@ import time
 
 # greet("Rajesh")
 
-def cache(func):
-    cache = {}
+# def cache(func):
+#     cache = {}
+#     def inner(*args, **kwargs):
+#         if args in cache:
+#             return cache[args]
+#         else:
+#             result = func(*args, **kwargs)
+#             cache[args] = result
+#             return result
+#     return inner
+
+# def long_process(func):
+#     def inner(*args, **kwargs):
+#         time.sleep(5) 
+#         return func(*args, **kwargs) 
+#     return inner
+
+# @cache
+# @long_process
+# def add(x, y):
+#     return x + y
+
+# print(add(1, 2))
+# print(add(1, 2))
+# print(add(4, 6))
+
+def test(func):
     def inner(*args, **kwargs):
-        if args in cache:
-            return cache[args]
-        else:
-            result = func(*args, **kwargs)
-            cache[args] = result
-            return result
+        print("Before")
+        result = func(*args, **kwargs)
+        print("After")
+        return result
     return inner
 
-def long_process(func):
-    def inner(*args, **kwargs):
-        time.sleep(5) 
-        return func(*args, **kwargs) 
-    return inner
+@test
+def add(li):
+    sum = 0
+    for i in li:
+        sum += i
+    print("Using add(itr)", sum)
+    return li
 
-@cache
-@long_process
-def add(x, y):
-    return x + y
-
-print(add(1, 2))
-print(add(1, 2))
-print(add(4, 6))
+add([1,2,3])
