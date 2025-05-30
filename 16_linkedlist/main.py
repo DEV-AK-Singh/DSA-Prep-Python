@@ -48,8 +48,8 @@ class LinkedList:
         itr.next = n    
 
     def insert_at(self, idx, data):
-        n = Node(data)
-        if self.length_of_lList() <= idx or idx <= 0:
+        n = Node(data) 
+        if idx < 0 or idx > self.length_of_lList():
             raise Exception("Invalid index value..")
         if idx == 0:
             self.insert_at_beginning(data)
@@ -65,6 +65,25 @@ class LinkedList:
             itr.next = n
             n.next = temp
 
+    def remove_at(self, idx):
+        count = 0
+        itr = self.head
+        if idx < 0 or idx > self.length_of_lList():
+            raise Exception("Invalid index value..")
+        if idx == 0:
+            temp = itr.next
+            del itr
+            self.head = temp
+            return  
+        while count != idx - 1:
+            itr = itr.next
+            count += 1
+        if idx == self.length_of_lList() - 1:
+            itr.next = None
+            return
+        temp = itr.next.next
+        del itr.next
+        itr.next = temp
             
     # @staticmethod
     # def printL():
@@ -107,8 +126,13 @@ def main():
     ll.insert_at_end(7)
     ll.length_of_lList()
 
-    ll.insert_at(0, 23)
+    ll.insert_at(6, 23)
+    ll.insert_at(7, 53)
 
+    ll.printList()
+
+    ll.remove_at(7)
+    
     ll.printList()
 
 if __name__ == "__main__":
