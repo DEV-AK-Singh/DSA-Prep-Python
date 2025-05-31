@@ -84,6 +84,11 @@ class LinkedList:
         temp = itr.next.next
         del itr.next
         itr.next = temp
+
+    def create_lList(self, li):
+        self.head = None
+        for i in li:
+            self.insert_at_end(i)    
             
     # @staticmethod
     # def printL():
