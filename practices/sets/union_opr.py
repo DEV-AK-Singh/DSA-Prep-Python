@@ -1,0 +1,12 @@
+if __name__ == '__main__':
+    n1 = int(input())
+    s1 = set(map(int, input().split()))
+    n2 = int(input())
+    s2 = set(map(int, input().split()))
+    print(s1.symmetric_difference(s2))
+    # total_num_of_students = len(s1.difference(s2)) + len(s2.difference(s1)) + len(s1.intersection(s2))
+    # print(total_num_of_students)
+    # print(len(s1.union(s2)))
+    # print(len(s1.difference(s2)))
+    # print(len(s2.difference(s1)))
+    # print(len(s1.intersection(s2)))
