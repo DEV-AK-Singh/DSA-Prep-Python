@@ -4,38 +4,32 @@ import math
 import os
 import random
 import re
-import sys 
-
-def getTotalX(a, b):
-    max_a = max(a)
-    min_b = min(b)
-    
-    if max_a > min_b:
-        return 0
-    
-    count = 0
-    for x in range(max_a, min_b + 1):
-        if all(x % num == 0 for num in a) and all(num % x == 0 for num in b):
-            count += 1
-    
-    return count
-    
+import sys
+ 
+def breakingRecords(scores):
+    maxRecBreakCnt = 0
+    minRecBreakCnt = 0
+    maxVal = scores[0]
+    minVal = scores[0]
+    for rec in scores:
+        if rec > maxVal:
+            maxVal = rec
+            maxRecBreakCnt+=1
+        elif rec < minVal:
+            minVal = rec
+            minRecBreakCnt+=1    
+    return [maxRecBreakCnt, minRecBreakCnt]
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    first_multiple_input = input().rstrip().split()
+    n = int(input().strip())
 
-    n = int(first_multiple_input[0])
+    scores = list(map(int, input().rstrip().split()))
 
-    m = int(first_multiple_input[1])
+    result = breakingRecords(scores)
 
-    arr = list(map(int, input().rstrip().split()))
-
-    brr = list(map(int, input().rstrip().split()))
-
-    total = getTotalX(arr, brr)
-
-    fptr.write(str(total) + '\n')
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
 
     fptr.close()
