@@ -4,14 +4,7 @@ import math
 import os
 import random
 import re
-import sys
-
-#
-# Complete the 'dayOfProgrammer' function below.
-#
-# The function is expected to return a STRING.
-# The function accepts INTEGER year as parameter.
-#
+import sys 
 
 def dayOfProgrammer(year):
     if year <= 1917:
