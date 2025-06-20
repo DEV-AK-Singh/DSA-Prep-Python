@@ -1,0 +1,37 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'superReducedString' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts STRING s as parameter.
+#
+
+def superReducedString(s):
+    string_stack = []
+    for c in s:
+        if not string_stack or string_stack[-1] != c:
+            string_stack.append(c)
+        else:
+            string_stack.pop()
+    if not string_stack:
+        return "Empty String"
+    
+    return "".join(string_stack)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = superReducedString(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
